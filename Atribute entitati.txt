@@ -1,0 +1,48 @@
+Utilizator  
+            •	ID_user Pk
+            •	Parola
+            •	Username
+            •	Telefon
+            •	Email
+            •	Data_nastere
+            •	Data_creare_cont
+
+Urmareste
+            •	ID_umraritor FK
+            •	ID_urmarit FK
+            •	Acceptat
+
+Postare
+            •	ID_postare Pk
+            •	ID_user FK
+            •	Data_postare
+            •	continut
+            •	tip_postare
+
+Apreciere
+            •	ID_postare FK
+            •	ID_user FK
+
+Comentariu
+            •	ID_postare FK
+            •	ID_user FK
+            •	continut
+            
+Grup
+            •	Id_grup Pk, , Id _creatorFK_
+            •	Nume
+            •	Data_creare
+            •	Categorie
+
+Membru
+            •	ID_user FK
+            •	ID_grup FK
+
+Admin_grup
+            •	ID_user FK
+            •	ID_grup FK
+
+Mesaj
+            •	ID_user FK
+            •	ID_grup FK
+            •	continut
