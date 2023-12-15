@@ -2,7 +2,7 @@
 
 namespace Mello.Models
 {
-    public class Group
+    public class Like
     {
         [Key]
         public int Id { get; set; }
@@ -11,7 +11,8 @@ namespace Mello.Models
         public int? UserId { get; set; }
         public virtual User? User { get; set; }
 
-        public string Name { get; set; }
-        public string Category { get; set; }
+        [Required]
+        public int? PostId { get; set; }
+        public virtual Post? Post { get; set; }
     }
 }
