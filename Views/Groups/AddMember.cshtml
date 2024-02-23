@@ -1,0 +1,26 @@
+﻿<form method="GET">
+    <div class="input-group mb-3">
+        <input style="" type="text" class="form-control" placeholder="Cauta utilizatori" name="search" value="@ViewBag.SearchString">
+        <button style="margin: 0px" class="btn-grad" type="submit">Search</button>
+    </div>
+</form>
+
+@if (@ViewBag.SearchString != "")
+{
+    @foreach (var user in @ViewBag.Profiles)
+    {
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@user.UserName</h5>
+
+                <form method="post" action="/Groups/AddMember">
+                    <input type="hidden" name="groupId" value="@ViewBag.GroupId" />
+                    <input type="hidden" name="UserId" value="@user.Id" />
+                    <button class="btn-grad" type="submit">Adauga utilizator</button>
+                </form>
+
+            </div>
+        </div>
+    }
+
+}

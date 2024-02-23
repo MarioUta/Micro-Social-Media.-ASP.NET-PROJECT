@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "Show";
+}
+
+
+
+<div class="flex-container">
+    <h1> @ViewBag.Group.Name </h1>
+    <a class="btn-grad" href="/Groups/AddMember/@ViewBag.Group.Id">Adauaga membri</a>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<body>
+    @if (@ViewBag.Group.Messages.Count > 0)
+    {
+
+        @foreach (var message in @ViewBag.Messages)
+        {
+            @if (@message.UserId != @ViewBag.User.Id)
+            {
+                <div class="d-flex justify-content-start">
+
+                    <div class="row">
+                        <div class="col-md-2"></div>
+
+                        <div class="message-box received">
+                            <p>@message.User.UserName</p>
+
+                            <p>@message.Content</p>
+
+                        </div>
+
+                        <div class="col-md-2"></div>
+
+                    </div>
+
+                </div>
+            }
+
+            else
+            {
+                <div class="d-flex justify-content-end">
+
+                    <div class="message-box sent">
+
+                        <div class="col-md-2"></div>
+
+                        <div class="d-flex flex-row justify-content-end">
+
+
+                            <form method="post" action="/Messages/Delete/@message.Id">
+
+                                <button class="del" type="submit"><img width="20px" src="~/images/delete.png" /></button>
+
+                            </form>
+                            <a href="/Messages/Edit/@message.Id"><img width="20px" src="~/images/edit.png" /></a>
+
+
+                        </div>
+
+                        <p>@message.Content</p>
+
+                        <div class="col-md-2"></div>
+
+                    </div>
+
+                </div>
+            }
+
+        }       }
+
+    else
+    {
+        <h1>Nu exista mesaje </h1>
+    }
+
+
+    <br />
+    <br />
+    <br />
+
+</body>
+
+
+<footer class="footer">
+    <div class="container">
+
+        <div class="row">
+
+
+            <form method="post" action="/Messages/New">
+
+                <div class="d-flex flex-row justify-content-around">
+
+                    <input type="hidden" name="GroupId" value="@ViewBag.Group.Id" />
+                    <input type="hidden" name="UserId" value="@ViewBag.User.Id" />
+
+
+                    <textarea class="form-control" name="Content" placeholder="Message"></textarea>
+                    <br />
+
+                    <button style="margin :0px" class="btn-grad send" type="submit">Send</button>
+
+                </div>
+
+            </form>
+            <br />
+            <br />
+            <br />
+            <br />
+
+
+
+        </div>
+
+    </div>
+
+
+</footer>

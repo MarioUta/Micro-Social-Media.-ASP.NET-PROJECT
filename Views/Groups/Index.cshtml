@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@foreach (var group in ViewBag.Groups)
+{
+    <div class="flex-container justify-content">
+
+
+        <a class="btn-grad" href="Groups/Show/@group.Id">@group.Name</a>
+
+
+    </div>
+}

@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+
+
+
+
+<form method="post" action="/Posts/Edit/@ViewBag.Post.Id">
+
+    <div class="flex-container">
+        <h2>Editeaza postarea</h2>
+        <br />
+        <label>Titlu articol</label>
+        <input type="text" name="Title" value="@ViewBag.Post.Title" />
+        <br />
+
+        <label>Descriere postare</label>
+        <textarea style="width:300px; min-height: 5em; max-height: 50vh;" name="Description">@ViewBag.Post.Description</textarea>
+        <br />
+
+        <button class="btn-grad" type="submit">Modifica Postarea</button>
+    </div>
+
+
+</form>
+
+

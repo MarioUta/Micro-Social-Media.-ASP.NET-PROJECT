@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+
+
+
+
+<form method="post" action="/Coments/Edit/@ViewBag.comm.Id">
+
+    <div class="flex-container">
+        <h2>Editeaza cometariu</h2>
+        <br />
+        <label>Continut comentariu</label>
+        <textarea style="width:300px; min-height: 5em; max-height: 50vh;" name="Content" >@ViewBag.comm.Content</textarea>
+        <br /><br />
+
+        <button class="btn-grad" type="submit">Modifica Comentariul</button
+    </div>
+
+
+</form>
+
+

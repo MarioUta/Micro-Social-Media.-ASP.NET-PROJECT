@@ -1,0 +1,125 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.btn-grad-red {
+    background-image: linear-gradient(to right, #D31027 0%, #EA384D 51%, #D31027 100%);
+    margin: 10px;
+    padding: 10px 15px;
+    text-align: center transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    border: none;
+}
+
+    .btn-grad-red:hover {
+        background-position: right center; /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+    }
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Optional: Center items horizontally */
+}
+
+.card {
+    max-width: 35rem;
+    margin-bottom: 10px;
+}
+
+.btn-grad {
+    background-image: linear-gradient(to right, #4776E6 0%, #8E54E9 51%, #4776E6 100%);
+    margin: 10px;
+    padding: 10px 15px;
+    text-align: center transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    border: none;
+}
+
+    .btn-grad:hover {
+        background-position: right center; /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+    }
+
+a{
+    text-decoration:none;
+}
+
+button{
+    border: none;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    border: 2px;
+    border-color: grey;
+}
+
+.send {
+    background-image: linear-gradient(to right, #4776E6 0%, #8E54E9 51%, #4776E6 100%);
+    margin: 0px;
+    padding: 10px;
+    text-align: center transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: block;
+    border: none;
+}
+
+.del {
+    border: none;
+    background-color: transparent;
+}
+
+.message-box {
+    max-width: 300px;
+    word-wrap: break-word;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 25px;
+    color: white;
+}
+
+.sent {
+    background-image: linear-gradient(to right, #4776E6 0%, #8E54E9 51%, #4776E6 100%);
+}
+
+.received {
+    background-image: linear-gradient(to right, #06beb6 0%, #48b1bf 51%, #06beb6 100%);
+}
+
+.message-box:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+}

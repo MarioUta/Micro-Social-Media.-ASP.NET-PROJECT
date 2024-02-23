@@ -1,0 +1,11 @@
+﻿@foreach(var request in ViewBag.Requests)
+{
+    <div class="row">
+        <div class="col-md-7 col-sm-7">
+            <a href="@Url.Action("Show", "Profile", new { id = request.Requester.Id })" class="profile-link">@request.Requester.UserName</a>
+        </div>
+        <div class="col-md-3 col-sm-3">
+            <a style="max-width:138px" class="btn-grad" href="@Url.Action("AcceptRequest","Profile", new {id = request.Requester.Id})">Accepta Cerere</a>
+        </div>
+    </div>
+}

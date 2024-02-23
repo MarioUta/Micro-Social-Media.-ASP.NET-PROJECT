@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<form method="GET">
+    <div class="input-group mb-3">
+        <input style="" type="text" class="form-control" placeholder="Cauta utilizatori" name="search" value="@ViewBag.SearchString">
+        <button style="margin: 0px" class="btn-grad" type="submit">Search</button>
+    </div>
+</form>
+
+@if (!string.IsNullOrEmpty(ViewBag.SearchString))
+{
+    <div>Rezultatele pentru @ViewBag.SearchString:</div>
+    @foreach (var user in ViewBag.Profiles)
+    {
+        <div><a href="@Url.Action("Show", "Profile", new { id = user.Id })">@user.UserName</a></div>
+        <br />
+    }
+}
+else
+{
+    <div class="flex-container">
+
+    @foreach (var post in ViewBag.Posts)
+    {
+
+        <div class="card mb-3" style="max-width: 35rem">
+            @if (post.Type == "Image")
+            {
+                <img class="card-img-top" src="@post.Link">
+            }
+            else if (post.Type == "Video")
+            {
+                <iframe width="560" height="315" src="@post.Link" frameborder="0" allowfullscreen></iframe>
+            }
+            <div class="card-body">
+                <h4 class="card-title">@post.Title</h4>
+                <h6>
+                <a class="card-subtitle mb-2 text-muted" href="@Url.Action("Show", "Profile", new { id = post.User.Id })">@post.User.UserName</a>
+                </h6>
+                <div class="card-text">@post.Description</div>
+                    <div class="d-flex flex-row justify-content-around">
+
+                    @if (ViewBag.User != null)
+                    {
+                        @if (ViewBag.User.Id == post.UserId)
+                        {
+                            <a class="btn-grad" href="/Posts/Edit/@post.Id">Editeaza Postare</a>
+                        }
+
+                        @if (ViewBag.Role == "Admin" || (ViewBag.User.Id == post.UserId))
+                        {
+                            <form method="post" action="/Posts/Delete/@post.Id">
+                                <button class="btn-grad-red" type="submit">Sterge Postarea</button>
+                            </form>
+                        }   
+                    }
+
+                </div>
+
+            </div>
+               <div class="card-footer flex-container">
+                    @foreach(var comm in post.Comments)
+                    {
+                        <div class="card" style="width: 26rem;">
+                            <div class="card-body">
+                                <h6>
+                                    <a class="card-subtitle mb-2 text-muted" href="@Url.Action("Show", "Profile", new { id = comm.User.Id })">@comm.User.UserName</a>
+                                </h6>
+                                <p class="card-text">@comm.Content</p>
+
+                                <div class="d-flex flex-row justify-content-around">
+                                    @if (ViewBag.User != null)
+                                {
+                                    @if (ViewBag.User.Id == comm.UserId)
+                                    {
+                                        <a class="btn-grad" href="/Coments/Edit/@comm.Id">Editeaza Comentariu</a>
+                                    }
+
+                                    @if (ViewBag.Role == "Admin" || (ViewBag.User.Id == comm.UserId) || ViewBag.User.Id == comm.UserId)
+                                    {
+                                        <form method="post" action="/Coments/Delete/@comm.Id">
+                                            <button class="btn-grad-red" type="submit">Sterge comentariul</button>
+                                        </form>
+                                    }
+                                }
+                                </div>
+                                
+                            </div>
+                        </div>
+                    }
+
+
+                    <div class="card" style="width: 26rem;">
+                        <div class="card-body">
+                            
+                          <form method="post" action="/Coments/New">
+                            <div class="card-body">
+                                <input type="hidden" name="PostId" value="@post.Id" />
+                                <label>Continut comentariu</label>
+                                <br />
+                                <textarea class="form-control" name="Content"></textarea>
+                                <br />
+                                <button class="btn-grad" type="submit">Adauga comentariul</button>
+                            </div>
+                        </form>
+
+                        </div>
+                    </div>
+
+
+                    
+
+
+
+                </div>
+        </div>
+    }
+
+    </div>
+
+    
+    @if (ViewBag.IsLoggedIn == true)
+    {
+        <footer class="footer">
+            <div style="border-top: 2px solid grey" class="d-flex justify-content-center">
+                <a class="btn-grad" href="/Posts/New">Adauga Postare</a>
+                <br />
+                <a class="btn-grad" href="Groups/New">Adauga un grup</a>
+                <br />
+            </div>
+        </footer>
+    }
+}

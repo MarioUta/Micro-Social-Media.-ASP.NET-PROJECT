@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "New";
+}
+
+<form enctype="multipart/form-data" asp-controller="Posts" asp-action="New">
+
+    <div class="flex-container">
+        <h2>Add post</h2>
+        <label>Titlu Postare</label>
+        <input type="text" name="Title" />
+        <br />
+
+        <label>Descrierie post</label>
+        <textarea style="width:300px; min-height: 5em; max-height: 50vh;" name="Description"></textarea>
+        <br />
+
+        <label>Tip Postare</label>
+        <select id="dropdown" name="Type" onchange="showContent()">
+            <option value="Text"> Text</option>
+            <option value="Image"> Image</option>
+            <option value="Video"> Video</option>
+        </select>
+        <br />
+
+        <style>
+            .content {
+                display: none;
+            }
+        </style>
+
+        <div id="Image" class="content">
+            <div>Incarca imaginea</div>
+            <input type="file" name="PostImage" />
+        </div>
+
+
+        <div id="Video" class="content">
+            <div>Introduce link-ul video-ului</div>
+            <br/>
+            <input type="text" name="Link"  />
+        </div>
+
+        <script>
+            function showContent() {
+
+                var dropdown = document.getElementById("dropdown");
+                var selectedOption = dropdown.options[dropdown.selectedIndex].value;
+
+                var contentDivs = document.querySelectorAll('.content');
+                contentDivs.forEach(function (div) {
+                    div.style.display = 'none';
+                });
+
+                var selectedDiv = document.getElementById(selectedOption);
+                selectedDiv.style.display = "block";
+
+                if (selectedOption == "Video" || selectedOption == "Image") {
+                    var link = document.getElementById("linku");
+                    link.style.display = "block";
+
+                }
+            }
+
+        </script>
+         <br />
+        <button class="btn-grad" type="submit" value="Upload">Adauga post</button
+
+    </div>
+
+
+</form>
+
+

@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+
+
+
+
+<form method="post" action="/Messages/Edit/@ViewBag.Message.Id">
+
+    <div class="flex-container">
+        <h2>Editeaza mesajul</h2>
+        <label>Continut mesaj</label>
+        <textarea style="width:300px; min-height: 5em; max-height: 50vh;" name="Content">@ViewBag.Message.Content</textarea>
+        <br />
+
+        <button class="btn-grad" type="submit">Modifica Comentariul</button>
+
+
+    </div>
+
+
+</form>
+
+

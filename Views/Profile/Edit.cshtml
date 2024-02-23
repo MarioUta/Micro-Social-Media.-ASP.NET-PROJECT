@@ -1,0 +1,32 @@
+﻿<form enctype="multipart/form-data" asp-controller="Profile" asp-action="Edit">
+
+    <div class="flex-container">
+        <h1>Edit profile</h1>
+        <label>Username</label>
+        <input type="text" name="UserName" value="@ViewBag.User.UserName"></input>
+        <label>Email</label>
+        <input type="text" name="Email" value="@ViewBag.User.Email"></input>
+        <label>Phone Number</label>
+        <input type="number" name="PhoneNumber" value="@ViewBag.User.PhoneNumber"></input>
+        <label>Public Profile</label>
+        @if (ViewBag.User.Public == null)
+        {
+            ViewBag.User.Public = false;
+        }
+        @if (ViewBag.User.Public)
+        {
+            <input type="checkbox" name="Public" value="True" checked></input>
+        }else{
+            <input type="checkbox" name="Public" value="True"></input>
+        }
+
+        <div id="Image" class="content flex-container">
+            <div>Incarca imaginea</div>
+            <input type="file" name="PostImage" value=""/>
+        </div>
+
+        <button class="btn-grad" type="submit">Submit changes</button>
+
+    </div>
+
+</form>
